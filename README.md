@@ -82,7 +82,3 @@ npm run dev
 - 🔍 Search movies by title
 - ⭐ Save favorite movies (coming soon!)
 - 📋 View detailed movie information
-
-## 📝 License
-
-[MIT](LICENSE)
