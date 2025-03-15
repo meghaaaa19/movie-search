@@ -22,12 +22,6 @@
         <div class="movie-details">
             <div class="movie-poster">
                 <img src="<%= movie.Poster !== 'N/A' ? movie.Poster : '/no-image.jpg' %>" alt="<%= movie.Title %>">
-                <% if(movie.imdbRating !== 'N/A') { %>
-                    <div class="imdb-rating">
-                        <i class="fab fa-imdb"></i>
-                        <span><%= movie.imdbRating %>/10</span>
-                    </div>
-                <% } %>
             </div>
             
             <div class="movie-content">
@@ -41,6 +35,13 @@
                         <span><i class="fas fa-tag"></i> <%= movie.Rated %></span>
                     <% } %>
                 </div>
+                
+                <% if(movie.imdbRating !== 'N/A') { %>
+                <div class="rating">
+                    <i class="fas fa-star star"></i>
+                    <span><%= movie.imdbRating %>/10</span>
+                </div>
+                <% } %>
                 
                 <% if(movie.Plot !== 'N/A') { %>
                 <div class="movie-description">
@@ -90,36 +91,6 @@
                         <span><%= movie.Awards %></span>
                     </div>
                     <% } %>
-                </div>
-                
-                <!-- Where to Watch Section -->
-                <div class="where-to-watch">
-                    <h3>Where to Watch</h3>
-                    <div class="streaming-options">
-                        <!-- This section will need to be integrated with a service/API that provides streaming availability -->
-                        <!-- Example streaming services -->
-                        <div class="streaming-service">
-                            <a href="https://www.netflix.com/search?q=<%= encodeURIComponent(movie.Title) %>" target="_blank" class="service-link">
-                                <i class="fas fa-play-circle"></i> Netflix
-                            </a>
-                        </div>
-                        <div class="streaming-service">
-                            <a href="https://www.amazon.com/s?k=<%= encodeURIComponent(movie.Title) %>" target="_blank" class="service-link">
-                                <i class="fab fa-amazon"></i> Amazon Prime
-                            </a>
-                        </div>
-                        <div class="streaming-service">
-                            <a href="https://www.hulu.com/search?q=<%= encodeURIComponent(movie.Title) %>" target="_blank" class="service-link">
-                                <i class="fas fa-tv"></i> Hulu
-                            </a>
-                        </div>
-                        <div class="streaming-service">
-                            <a href="https://www.disneyplus.com/search?q=<%= encodeURIComponent(movie.Title) %>" target="_blank" class="service-link">
-                                <i class="fab fa-disney-plus"></i> Disney+
-                            </a>
-                        </div>
-                    </div>
-                    <p class="streaming-note">Note: Links direct to search results on each platform.</p>
                 </div>
                 
                 <a href="/" class="btn back-button">

@@ -18,70 +18,37 @@
         </div>
     </header>
     
-    <div class="hero-section">
-        <div class="container">
-            <h1>🎬 Discover Movies</h1>
-            
-            <form method="GET" action="/">
-                <input type="text" name="search" placeholder="Search for movies..." value="<%= searchQuery %>">
-                <button type="submit">
-                    <i class="fas fa-search"></i> Search
-                </button>
-            </form>
-        </div>
-    </div>
-    
     <div class="container">
-        <% if (!searchQuery) { %>
-            <div class="trending-section">
-                <h2 class="section-title">Trending Movies</h2>
-                <div class="movies trending-movies">
-                    <% if (trendingMovies && trendingMovies.length > 0) { %>
-                        <% trendingMovies.forEach(movie => { %>
-                            <div class="movie">
-                                <div class="movie-badge">Trending</div>
-                                <img src="<%= movie.Poster !== 'N/A' ? movie.Poster : '/no-image.jpg' %>" alt="<%= movie.Title %>">
-                                <div class="movie-info">
-                                    <h2><%= movie.Title %></h2>
-                                    <div class="movie-meta">
-                                        <span><%= movie.Year %></span>
-                                    </div>
-                                    <a href="/movie/<%= movie.imdbID %>" class="btn">View Details</a>
-                                </div>
+        <h1>🎬 Discover Movies</h1>
+        
+        <form method="GET" action="/">
+            <input type="text" name="search" placeholder="Search for movies..." value="<%= searchQuery %>">
+            <button type="submit">
+                <i class="fas fa-search"></i> Search
+            </button>
+        </form>
+        
+        <div class="movies">
+            <% if (movies && movies.length > 0) { %>
+                <% movies.forEach(movie => { %>
+                    <div class="movie">
+                        <img src="<%= movie.Poster !== 'N/A' ? movie.Poster : '/no-image.jpg' %>" alt="<%= movie.Title %>">
+                        <div class="movie-info">
+                            <h2><%= movie.Title %></h2>
+                            <div class="movie-meta">
+                                <span><%= movie.Year %></span>
                             </div>
-                        <% }) %>
-                    <% } else { %>
-                        <div class="empty-state">
-                            <i class="fas fa-film fa-3x" style="margin-bottom: 20px; color: var(--primary-color);"></i>
-                            <p>Loading trending movies...</p>
+                            <a href="/movie/<%= movie.imdbID %>" class="btn">View Details</a>
                         </div>
-                    <% } %>
-                </div>
-            </div>
-        <% } else { %>
-            <h2 class="section-title">Search Results for "<%= searchQuery %>"</h2>
-            <div class="movies">
-                <% if (movies && movies.length > 0) { %>
-                    <% movies.forEach(movie => { %>
-                        <div class="movie">
-                            <img src="<%= movie.Poster !== 'N/A' ? movie.Poster : '/no-image.jpg' %>" alt="<%= movie.Title %>">
-                            <div class="movie-info">
-                                <h2><%= movie.Title %></h2>
-                                <div class="movie-meta">
-                                    <span><%= movie.Year %></span>
-                                </div>
-                                <a href="/movie/<%= movie.imdbID %>" class="btn">View Details</a>
-                            </div>
-                        </div>
-                    <% }) %>
-                <% } else { %>
-                    <div class="empty-state">
-                        <i class="fas fa-film fa-3x" style="margin-bottom: 20px; color: var(--primary-color);"></i>
-                        <p>No movies found. Try a different search term.</p>
                     </div>
-                <% } %>
-            </div>
-        <% } %>
+                <% }) %>
+            <% } else { %>
+                <div class="empty-state">
+                    <i class="fas fa-film fa-3x" style="margin-bottom: 20px; color: var(--primary-color);"></i>
+                    <p>No movies found. Try a different search term.</p>
+                </div>
+            <% } %>
+        </div>
     </div>
 </body>
 </html>
