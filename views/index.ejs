@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Search</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header>
+        <div class="nav-container container">
+            <a href="/" class="logo">
+                <i class="fas fa-film"></i>
+                MovieSearch
+            </a>
+        </div>
+    </header>
+    
+    <div class="container">
+        <h1>🎬 Discover Movies</h1>
+        
+        <form method="GET" action="/">
+            <input type="text" name="search" placeholder="Search for movies..." value="<%= searchQuery %>">
+            <button type="submit">
+                <i class="fas fa-search"></i> Search
+            </button>
+        </form>
+        
+        <div class="movies">
+            <% if (movies && movies.length > 0) { %>
+                <% movies.forEach(movie => { %>
+                    <div class="movie">
+                        <img src="<%= movie.Poster !== 'N/A' ? movie.Poster : '/no-image.jpg' %>" alt="<%= movie.Title %>">
+                        <div class="movie-info">
+                            <h2><%= movie.Title %></h2>
+                            <div class="movie-meta">
+                                <span><%= movie.Year %></span>
+                            </div>
+                            <a href="/movie/<%= movie.imdbID %>" class="btn">View Details</a>
+                        </div>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <div class="empty-state">
+                    <i class="fas fa-film fa-3x" style="margin-bottom: 20px; color: var(--primary-color);"></i>
+                    <p>No movies found. Try a different search term.</p>
+                </div>
+            <% } %>
+        </div>
+    </div>
+</body>
+</html>
