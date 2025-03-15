@@ -21,5 +21,7 @@ Open your terminal and clone the project:
 
 ### 2. Install dependencies:
 Navigate to the project directory and install the required dependencies:
+```sh
 cd movie-search
 npm install
+
