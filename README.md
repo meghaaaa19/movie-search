@@ -80,7 +80,6 @@ npm run dev
 ## 🌐 Features
 
 - 🔍 Search movies by title
-- 📅 Filter results by year and IMDb rating
 - ⭐ Save favorite movies (coming soon!)
 - 📋 View detailed movie information
 
